@@ -1,15 +1,14 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import {assets} from '../assets/assets'
 import { Link, NavLink } from 'react-router-dom'
-import About from '../pages/About'
-import Contact from '../pages/Contact'
-import Collection from '../pages/Collection'
 const NavBar = () => {
 
     const [visible,setVisible]=useState(false)
   return (
     <div className='flex items-center justify-between py-3 font-medium'>
-        <img src={assets.logo} className='w-36' alt="" />
+        <Link to='/'>
+            <img src={assets.logo} className='w-36' alt="" />
+        </Link>
         <ul className='hidden sm:flex gap-5 text-sm text-gray-700'>
             <NavLink to='/' className='flex flex-col items-center gap-1'>
                 <p>HOME</p>
@@ -54,7 +53,7 @@ const NavBar = () => {
                     <img src={assets.dropdown_icon} className='h-4 rotate-90' alt="" />
                     <p className='pb-[3px]'>Back</p>
                 </div>
-                <NavLink to='/home' className='py-2 pl-6' onClick={()=>setVisible(false)}>HOME</NavLink>
+                <NavLink to='/' className='py-2 pl-6' onClick={()=>setVisible(false)}>HOME</NavLink>
                 <hr />
                 <NavLink to='/collection' className='py-2 pl-6' onClick={()=>setVisible(false)}>COLLECTION</NavLink>
                 <hr />
