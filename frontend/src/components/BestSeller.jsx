@@ -21,14 +21,24 @@ const BestSeller = () => {
             </p>
         </div>
 
-        {/* Products */}
-        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
-            {
-                bestSeller.map((item, index)=>(
-                    <ProductItem key={index} id={item._id} image={item.image} price={item.price} name={item.name} />
-                ))
-            }
+        {/* Horizontal Product Slider */}
+      <div className="overflow-x-auto">
+        <div className="flex gap-6 px-4 pb-4 overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 snap-x snap-mandatory">
+          {bestSeller.map((item, index) => (
+            <div
+              key={index}
+              className="min-w-[200px] sm:min-w-[220px] md:min-w-[250px] snap-start"
+            >
+              <ProductItem
+                id={item._id}
+                image={item.image}
+                price={item.price}
+                name={item.name}
+              />
+            </div>
+          ))}
         </div>
+      </div>
     </div>
   )
 }
