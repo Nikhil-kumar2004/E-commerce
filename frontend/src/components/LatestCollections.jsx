@@ -33,7 +33,7 @@ const LatestCollections = () => {
             >
               <ProductItem
                 id={item._id}
-                image={item.image}
+                images={item.images}
                 price={item.price}
                 name={item.name}
               />
