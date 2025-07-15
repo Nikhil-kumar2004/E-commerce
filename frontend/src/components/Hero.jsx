@@ -9,7 +9,7 @@ const slides = [
     image: assets.hero,
   },
   {
-    title: 'Effortless Style',
+    title: 'Effortless Elegance',
     subtitle: 'Discover timeless fashion for every mood.',
     image: assets.hero_1,
   },
