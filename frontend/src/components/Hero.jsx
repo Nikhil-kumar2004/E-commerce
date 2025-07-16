@@ -47,7 +47,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="flex flex-col sm:flex-row border border-gray-400 h-[500px] overflow-hidden">
+    <div className="flex flex-col sm:flex-row border border-gray-400 h-[500px] relative overflow-hidden">
       {/* Left: Captions */}
       <div className="w-full sm:w-1/2 flex items-center justify-center p-6 bg-white text-[#414141]">
         <div className="text-center sm:text-left max-w-md space-y-4">
