@@ -67,11 +67,11 @@ const registerUser= async (req, res)=>{
         const user= await newUser.save()
         const token = createToken(user._id)
 
-        res.status(201).json({success:true, token})
+        return res.status(201).json({success:true, token})
     }
     catch(error){
         console.log(error)
-        res.json({success:false, msg:error.message})
+        return res.json({success:false, msg:error.message})
     }
 }
 
@@ -81,15 +81,15 @@ const adminLogin= async (req, res)=>{
 
         if(email===process.env.ADMIN_EMAIL && password===process.env.ADMIN_PASSWORD){
             const token=createToken(email+password)
-            res.json({success:true, token})
+            return res.json({success:true, token})
         }
         else{
-            res.json({success:false, msg:"Invalid Credentials"})
+            return res.json({success:false, msg:"Invalid Credentials"})
         }
     }
     catch(error){
         console.log(error)
-        res.json({success:false, msg:error.message})
+        return res.json({success:false, msg:error.message})
     }
 }
 

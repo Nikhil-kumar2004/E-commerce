@@ -33,44 +33,44 @@ const addProduct=async (req,res)=>{
         console.log(productData)
         const product=new productModel(productData)
         await product.save();
-        res.json({success:true, msg:"Product Added"})
+        return res.json({success:true, msg:"Product Added"})
     }
     catch(error){
         console.log(error)
-        res.json({success:false, msg:error.message})
+        return res.json({success:false, msg:error.message})
     }
 }
 
 const listProduct=async (req,res)=>{
     try{
         const products=await productModel.find({})
-        res.json({success:true, products})
+        return res.json({success:true, products})
     }
     catch(error){
         console.log(error)
-        res.json({success:false, msg:error.message})
+        return res.json({success:false, msg:error.message})
     }
 }
 
 const removeProduct=async (req,res)=>{
     try{
         await productModel.findByIdAndDelete(req.body.id);
-        res.json({success:true, msg:"Product Removed"})
+        return res.json({success:true, msg:"Product Removed"})
     }
     catch(error){
         console.log(error)
-        res.json({success:false, msg:error.message})
+        return res.json({success:false, msg:error.message})
     }
 }
 
 const singleProduct=async (req,res)=>{
     try{
         const product=await productModel.findById(req.body.id)
-        res.json({success:true, product})
+        return res.json({success:true, product})
     }
     catch(error){
         console.log(error)
-        res.json({success:false, msg:error.message})
+        return res.json({success:false, msg:error.message})
     }
 }
 
