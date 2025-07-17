@@ -7,12 +7,13 @@ import Collection from './pages/collection'
 import Contact from './pages/Contact'
 import Login from './pages/Login'
 import Orders from './pages/Orders'
-import PlaceOrder from './pages/Placeorder'
+import PlaceOrder from './pages/PlaceOrder'
 import Product from './pages/Product'
 import NavBar from './components/Navbar'
 import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
 import { ToastContainer} from 'react-toastify';
+import Verify from './pages/Verify'
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
         <Route path='/place-order' element={<PlaceOrder/>} />
         <Route path='/product/:productId' element={<Product/>} />
         <Route path='/contact' element={<Contact/>} />
+        <Route path='/verify' element={<Verify/>} />
       </Routes>
       <Footer/>
     </div>

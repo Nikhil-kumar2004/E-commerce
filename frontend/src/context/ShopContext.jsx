@@ -39,6 +39,16 @@ const ShopContextProvider=(props)=>{
             cartCopy[itemId][size]=1;
         }
         setCartItems(cartCopy);
+        if(token){
+            try{
+                const response=await axios.post(`${backendUrl}/api/cart/add`,{itemId,size}, {headers:{token}})
+                toast.success(response.data.msg)
+            }
+            catch(error){
+                console.log(error)
+                toast.error(error.message)
+            }
+        }
     }
 
     const getCartCount=()=>{
@@ -64,6 +74,48 @@ const ShopContextProvider=(props)=>{
         cartCopy[itemId][size]=quantity;
 
         setCartItems(cartCopy);
+
+        if(token){
+            try{
+                await axios.put(`${backendUrl}/api/cart/update`,{itemId,size,quantity}, {headers:{token}})
+            }
+            catch{
+                console.log(error)
+                toast.error(error.message)
+            }
+        }
+    }
+
+    const getCartData=async (token)=>{
+        try{
+            const response=await axios.get(`${backendUrl}/api/cart/get`,{headers:{token}})
+            if(response.data.success){
+                setCartItems(response.data.cartData)
+            }
+            else{
+                toast.error(response.data.msg)
+            }
+        }
+        catch(error){
+            console.log(error)
+            toast.error(error.message)
+        }
+    }
+
+    const deleteFromCart= async (itemId, size)=>{
+        try{
+            const response=await axios.delete(`${backendUrl}/api/cart/delete`,{data:{itemId,size}, headers:{token}})
+            if(response.data.success){
+                toast.success(response.data.msg)
+            }
+            else{
+                toast.error(response.data.msg)
+            }
+        }
+        catch(error){
+            console.log(error)
+            toast.error(error.message)
+        }
     }
 
     const getCartAmount=()=>{
@@ -113,6 +165,7 @@ const ShopContextProvider=(props)=>{
     useEffect(()=>{
         if(!token && localStorage.getItem('token')){
             setToken(localStorage.getItem('token'))
+            getCartData(localStorage.getItem('token'))
         }
     },[])
 
@@ -120,7 +173,7 @@ const ShopContextProvider=(props)=>{
         products, currency, delivery_fee,
         search, showSearch, setShowSearch, setSearch,
         cartItems, setCartItems, addToCart, getCartCount, updateCartQuantity,
-        getCartAmount, navigate, backendUrl, token, setToken
+        getCartAmount, navigate, backendUrl, token, setToken, deleteFromCart
     }
     return(
         <ShopContext.Provider value={value}>
