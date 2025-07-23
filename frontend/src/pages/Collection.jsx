@@ -3,7 +3,7 @@ import { ShopContext } from '../context/ShopContext'
 import { assets } from '../assets/assets';
 import Title from '../components/Title';
 import ProductItem from '../components/ProductItem';
-const collection = () => {
+const Collection = () => {
 
   const [showFilter, setShowFilter]=useState(false);
   const [filterProducts, setFilterProducts]=useState([]);
@@ -147,4 +147,4 @@ const collection = () => {
   )
 }
 
-export default collection
+export default Collection
