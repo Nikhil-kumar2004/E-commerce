@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import userModel from "../models/userModel.js";
 
 const addToCart= async (req, res)=>{
