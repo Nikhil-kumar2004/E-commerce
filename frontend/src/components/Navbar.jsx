@@ -5,9 +5,9 @@ import { ShopContext } from '../context/ShopContext'
 const NavBar = () => {
 
     const [visible, setVisible] = useState(false)
-    const { setShowSearch, getCartCount, token, navigate, setToken, setCartItems } = useContext(ShopContext)
+    const { search,setSearch, getCartCount, token, navigate, setToken, setCartItems } = useContext(ShopContext)
 
-    const logout=()=>{
+    const logout = () => {
         navigate('/login')
         localStorage.removeItem('token')
         setToken('')
@@ -37,22 +37,32 @@ const NavBar = () => {
                 </NavLink>
             </ul>
             <div className='flex items-center gap-4'>
-                <div
-                    onClick={() => setShowSearch(true)}
-                    className="flex items-center justify-between text-gray-600 border px-6 py-1 rounded-full cursor-pointer w-48"
-                >
-                    <span className="text-sm text-gray-500">Search</span>
-                    <img src={assets.search_icon} alt="search" className="w-4 h-4" />
+                <div className="flex items-center justify-between text-gray-600 border px-6 py-1 rounded-full cursor-pointer w-64">
+                    <input
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        type="text"
+                        placeholder="Search"
+                        className="flex-1 outline-none bg-transparent text-sm px-2"
+                    />
+                    <img
+                        src={assets.search_icon}
+                        alt="search"
+                        className="w-4 h-4 cursor-pointer"
+                        onClick={() => {
+                            console.log("Searching for:", search);
+                        }}
+                    />
                 </div>
                 <div className='group relative z-50'>
-                    <img onClick={()=> token ? null : navigate('/login')} src={assets.profile_icon} className="w-7 h-7 p-0.5 rounded-full border cursor-pointer" alt="" />
+                    <img onClick={() => token ? null : navigate('/login')} src={assets.profile_icon} className="w-7 h-7 p-0.5 rounded-full border cursor-pointer" alt="" />
                     {
                         token && <div className='group-hover:block absolute hidden dropdown-menu hover right-0 pt-4'>
-                        <div className='flex flex-col gap-2 w-36 py-3 px-4 bg-stone-100 text-gray-500 rounded'>
-                            <p onClick={()=>navigate('/orders')} className='cursor-pointer hover:text-black'>Orders</p>
-                            <p onClick={()=>logout()} className='cursor-pointer hover:text-black'>Logout</p>
+                            <div className='flex flex-col gap-2 w-36 py-3 px-4 bg-stone-100 text-gray-500 rounded'>
+                                <p onClick={() => navigate('/orders')} className='cursor-pointer hover:text-black'>Orders</p>
+                                <p onClick={() => logout()} className='cursor-pointer hover:text-black'>Logout</p>
+                            </div>
                         </div>
-                    </div>
                     }
                 </div>
                 <Link to='/cart' className='relative'>

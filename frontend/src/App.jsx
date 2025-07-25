@@ -10,7 +10,6 @@ import PlaceOrder from './pages/PlaceOrder'
 import Product from './pages/Product'
 import NavBar from './components/Navbar'
 import Footer from './components/Footer'
-import SearchBar from './components/SearchBar'
 import { ToastContainer} from 'react-toastify';
 import Verify from './pages/Verify'
 
@@ -19,7 +18,6 @@ const App = () => {
     <div className='px-4 lg:px-[3vw]'>
       <ToastContainer />
       <NavBar/>
-      <SearchBar/>
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/about' element={<About/>} />
