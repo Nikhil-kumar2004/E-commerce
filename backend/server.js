@@ -19,7 +19,10 @@ connectCoundinary()
 
 app.use(express.json())
 app.use(cors({
-    origin:'https://e-commerce-brown-omega-41.vercel.app',
+    origin:[
+        'https://e-commerce-brown-omega-41.vercel.app',
+        'https://clothify-admin-theta.vercel.app',
+    ],
     credentials:true
 }))
 
