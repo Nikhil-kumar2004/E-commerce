@@ -14,9 +14,9 @@ const Product = () => {
 
   const sizeOrder = ['S', 'M', 'L', 'XL', 'XXL'];
 
-  const sortedSizes = [...productData.sizes].sort(
-    (a, b) => sizeOrder.indexOf(a) - sizeOrder.indexOf(b)
-  );
+  const sortedSizes = Array.isArray(productData?.sizes)
+  ? [...productData.sizes].sort((a, b) => sizeOrder.indexOf(a) - sizeOrder.indexOf(b))
+  : [];
 
   const fetchProduct = async () => {
 
