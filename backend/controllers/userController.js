@@ -20,15 +20,15 @@ const loginUser= async (req, res)=>{
 
         if(isMatch){
             const token=createToken(user._id)
-            res.json({success:true, token})
+            return res.json({success:true, token})
         }
         else{
-            res.json({success:false, msg:"Invalid Credentials"})
+            return res.json({success:false, msg:"Invalid Credentials"})
         }
     }
     catch(error){
         console.log(error)
-        res.json({success:false, msg:error.message})
+        return res.json({success:false, msg:error.message})
     }
 }
 
@@ -37,7 +37,7 @@ const registerUser= async (req, res)=>{
         const {name, email, password}= req.body;
 
         if(!name || !email || !password){
-            res.json({success:false, msg:"All field are required"})
+            return res.json({success:false, msg:"All field are required"})
         }
         const exists= await userModel.findOne({email});
 
