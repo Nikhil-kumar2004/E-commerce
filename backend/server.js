@@ -18,7 +18,10 @@ connectCoundinary()
 //Middleware
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin:'https://clothify-frontend-liard.vercel.app',
+    credentials:true
+}))
 
 // Endpoints
 app.use('/api/user',userRouter)
