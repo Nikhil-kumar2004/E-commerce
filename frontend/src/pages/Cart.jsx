@@ -30,7 +30,7 @@ const Cart = () => {
 
   }, [cartItems, products])
 
-  return (cartData > 0) ? (
+  return(
     <div className='border-t pt-14'>
       <div className='text-2xl mb-3'>
         <Title text1={'YOUR'} text2={'CART'} />
@@ -69,11 +69,7 @@ const Cart = () => {
         </div>
       </div>
     </div>
-  ) : <div className="flex items-center justify-center h-[40vh]">
-    <h1 className="text-3xl md:text-5xl text-gray-800 font-serif">
-      Cart is Empty!
-    </h1>
-  </div>
+  )
 }
 
 export default Cart
