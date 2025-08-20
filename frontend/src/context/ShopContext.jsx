@@ -167,6 +167,28 @@ const ShopContextProvider=(props)=>{
             getCartData(localStorage.getItem('token'))
         }
     },[])
+    
+    useEffect(() => {// to handle changes across tabs in realtime.
+    const handleStorageChange = (e) => {
+        if (e.key === "token") {
+            const newToken = e.newValue;
+            setToken(newToken || ""); 
+
+            if (newToken) {
+                getCartData(newToken);
+            } else {
+                setCartItems({});
+                navigate("/login"); // 🔥 force logout navigation
+            }
+        }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    return () => {
+        window.removeEventListener("storage", handleStorageChange);
+    };
+}, [navigate]);
+
 
     const value={
         products, currency, delivery_fee,
