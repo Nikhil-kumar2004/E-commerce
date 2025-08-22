@@ -4,7 +4,8 @@ import { Link, NavLink } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext'
 const NavBar = () => {
 
-    const [visible, setVisible] = useState(false)
+    const [visible, setVisible] = useState(false);
+    const [input, setInput] = useState("");
     const { search,setSearch, getCartCount, token, navigate, setToken, setCartItems } = useContext(ShopContext)
 
     const logout = () => {
@@ -43,13 +44,13 @@ const NavBar = () => {
                         onChange={(e) => setInput(e.target.value)} // keeps input visible while typing
                         onKeyDown={(e) => {
                             if (e.key === "Enter") {
-                                setSearch(input);
+                            setSearch(input);
                             }
                         }}
                         type="text"
                         placeholder="Search"
                         className="flex-1 outline-none bg-transparent text-sm px-2"
-                    />
+                        />
                     <img
                         src={assets.search_icon}
                         alt="search"
