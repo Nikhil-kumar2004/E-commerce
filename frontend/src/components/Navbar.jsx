@@ -40,7 +40,11 @@ const NavBar = () => {
                 <div className="flex items-center justify-between text-gray-600 border px-6 py-1 rounded-full cursor-pointer w-64">
                     <input
                         value={search}
-                        onChange={(e) => setSearch(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                                setSearch(e.target.value);
+                            }
+                        }}
                         type="text"
                         placeholder="Search"
                         className="flex-1 outline-none bg-transparent text-sm px-2"
