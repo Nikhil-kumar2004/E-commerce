@@ -39,10 +39,11 @@ const NavBar = () => {
             <div className='flex items-center gap-4'>
                 <div className="flex items-center justify-between text-gray-600 border px-6 py-1 rounded-full cursor-pointer w-64">
                     <input
-                        value={search}
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)} // keeps input visible while typing
                         onKeyDown={(e) => {
                             if (e.key === "Enter") {
-                                setSearch(e.target.value);
+                                setSearch(input);
                             }
                         }}
                         type="text"
