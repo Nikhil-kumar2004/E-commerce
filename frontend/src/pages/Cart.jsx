@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 const Cart = () => {
 
-  const { currency, products, cartItems, updateCartQuantity, navigate, location } = useContext(ShopContext);
+  const { currency, products, cartItems, updateCartQuantity, navigate, location, token } = useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
 
   const handleCheckout = () => {
@@ -16,7 +16,7 @@ const Cart = () => {
       return;
     }
 
-    if (!user) {
+    if (!token) {
       toast.info("Please login to proceed");
       navigate("/login", { state: { from: location.pathname } }); 
       return;
@@ -67,7 +67,16 @@ const Cart = () => {
                     </div>
                   </div>
                 </div>
-                <input onChange={(e) => updateCartQuantity(item._id, item.size, Number(e.target.value))} className='border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1' type="number" min={1} defaultValue={item.quantity} readOnly />
+                <input value={item.quantity} onChange={(e) => { 
+                      const val = Number(e.target.value);
+                      if (val >= 1) {
+                        updateCartQuantity(item._id, item.size, val);
+                      }
+                  }}
+                  className="border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1"
+                  type="number"
+                  min={1}
+                />
                 <img onClick={() => updateCartQuantity(item._id, item.size, 0)} className='w-4 mr-4 sm:w-5 cursor-pointer' src={assets.bin_icon} alt="" />
               </div>
             )
