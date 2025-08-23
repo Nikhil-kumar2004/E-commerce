@@ -168,7 +168,7 @@ const ShopContextProvider=(props)=>{
         }
     },[])
     
-    useEffect(() => {// to handle changes across tabs in realtime.
+    useEffect(() => {
     const handleStorageChange = (e) => {
         if (e.key === "token") {
             const newToken = e.newValue;
@@ -178,7 +178,7 @@ const ShopContextProvider=(props)=>{
                 getCartData(newToken);
             } else {
                 setCartItems({});
-                navigate("/login"); // 🔥 force logout navigation
+                navigate("/login");
             }
         }
     };
@@ -202,4 +202,5 @@ const ShopContextProvider=(props)=>{
         </ShopContext.Provider>
     )
 }
+
 export default ShopContextProvider;

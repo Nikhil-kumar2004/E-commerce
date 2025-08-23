@@ -41,10 +41,18 @@ const NavBar = () => {
                 <div className="flex items-center justify-between text-gray-600 border px-6 py-1 rounded-full cursor-pointer w-64">
                     <input
                         value={input}
-                        onChange={(e) => setInput(e.target.value)} // keeps input visible while typing
+                        onChange={(e) => {
+                            const value=e.target.value;
+                            setInput(value);
+
+                            if(value===""){
+                                setInput("");
+                            }
+                        }}
                         onKeyDown={(e) => {
                             if (e.key === "Enter") {
-                            setSearch(input);
+                                setSearch(input);
+                                navigate("/collection");
                             }
                         }}
                         type="text"
