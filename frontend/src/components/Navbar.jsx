@@ -67,7 +67,7 @@ const NavBar = () => {
                                 setSearch("");
                             }}
                         >
-                            ×
+                            X
                         </span>
                     )}
                     <img
@@ -75,7 +75,8 @@ const NavBar = () => {
                         alt="search"
                         className="w-4 h-4 cursor-pointer"
                         onClick={() => {
-                            console.log("Searching for:", search);
+                            setSearch(input);
+                            navigate("/collection");
                         }}
                     />
                 </div>
