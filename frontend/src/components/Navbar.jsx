@@ -6,7 +6,7 @@ const NavBar = () => {
 
     const [visible, setVisible] = useState(false);
     const [input, setInput] = useState("");
-    const { search,setSearch, getCartCount, token, navigate, setToken, setCartItems } = useContext(ShopContext)
+    const { setSearch, getCartCount, token, navigate, setToken, setCartItems } = useContext(ShopContext)
 
     const logout = () => {
         navigate('/login')

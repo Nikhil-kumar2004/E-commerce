@@ -6,7 +6,7 @@ import axios from 'axios';
 const Login = () => {
 
   const [currentState, setCurrentState]=useState('Login');
-  const {token, setToken, backendUrl, navigate}=useContext(ShopContext);
+  const {token, setToken, backendUrl, navigate, location}=useContext(ShopContext);
   const [name,setName]=useState('');
   const [password,setPassword]=useState('');
   const [email,setEmail]=useState('');
@@ -46,7 +46,8 @@ const Login = () => {
 
   useEffect(()=>{
     if(token){
-      navigate('/')
+      const from = location.state?.from || "/";
+      navigate(from);
     }
   },[token])
   return (
