@@ -46,7 +46,7 @@ const NavBar = () => {
                             setInput(value);
 
                             if(value===""){
-                                setInput("");
+                                setSearch("");
                             }
                         }}
                         onKeyDown={(e) => {
@@ -59,6 +59,17 @@ const NavBar = () => {
                         placeholder="Search"
                         className="flex-1 outline-none bg-transparent text-sm px-2"
                         />
+                    {input && (
+                        <span
+                            className="text-gray-500 text-lg font-bold mr-2 cursor-pointer"
+                            onClick={() => {
+                                setInput("");
+                                setSearch("");
+                            }}
+                        >
+                            ×
+                        </span>
+                    )}
                     <img
                         src={assets.search_icon}
                         alt="search"
